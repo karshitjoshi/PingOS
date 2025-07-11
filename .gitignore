@@ -1,0 +1,5 @@
+src/boot.bin
+src/boot.flp
+src/sector2.o
+src/kernel.o
+src/kernel.bin
