@@ -7,13 +7,19 @@
 // Pixel Resolution 320x200
 // Text Resolution 40x25
 // Pixel Box Size 8x8
+// 1st line -> text , 2nd line -> border
+// Screen Left : 176x184
 
 extern void StartIDT();
 
 int _start()
 {
     InitializeIDT();
-    clearScreen();
-    initTimer();
-    while(1);
+    fore = WHITE;
+    back = PINK;
+    bord = BLUE;
+    clearScreenAnimation();
+    putBorder();
+    charPrint(8,0,BALL);
+    gameLoop();
 }
