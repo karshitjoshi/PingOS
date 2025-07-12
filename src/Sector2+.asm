@@ -256,6 +256,7 @@ ActivateSSE:
 ;EXCEPTION HANDLERS
 
 [extern keyboard_isr]
+[extern timerRecord]
 
 global isr1
 global isr2
@@ -278,6 +279,7 @@ global isr18
 global isr19
 global isr20
 global keyboard_handler
+global timer
 
 isr1: 
 	mov [0xb8000], byte 'Z'
@@ -407,6 +409,11 @@ isr20:
 keyboard_handler:
 	PUSHALL
 	call keyboard_isr
+	POPALL
+	iretq
+timer:
+	PUSHALL
+	call timerRecord
 	POPALL
 	iretq
 

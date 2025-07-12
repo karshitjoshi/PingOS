@@ -171,6 +171,13 @@ void InitializeIDT(){
 	IDTEntries[33].type_attr = 142;
 	IDTEntries[33].offset_2 = (uint_16) (((uint_64) keyboard_handler) >> 16);
 	IDTEntries[33].offset_3 = (uint_32) (((uint_64) keyboard_handler) >> 32);
+	//Timer IRQ
+	IDTEntries[32].offset_1 = (uint_16) ((uint_64) timer);
+	IDTEntries[32].selector = 8;
+	IDTEntries[32].ist = 0;
+	IDTEntries[32].type_attr = 142;
+	IDTEntries[32].offset_2 = (uint_16) (((uint_64) timer) >> 16);
+	IDTEntries[32].offset_3 = (uint_32) (((uint_64) timer) >> 32);
 	//IDTinfo
 	IDTinfo.limit = sizeof(struct IDTEntry) * 256;
 	IDTinfo.base = &IDTEntries[0];

@@ -2,6 +2,7 @@
 #include "idt.c"
 #include "outb_inb.c"
 #include "keyboard.c"
+#include "timer.c"
 
 // Pixel Resolution 320x200
 // Text Resolution 40x25
@@ -13,5 +14,6 @@ int _start()
 {
     InitializeIDT();
     clearScreen();
+    initTimer();
     while(1);
 }

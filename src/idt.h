@@ -40,3 +40,4 @@ extern void isr18();
 extern void isr19();
 extern void isr20();
 extern void keyboard_handler();
+extern void timer();
