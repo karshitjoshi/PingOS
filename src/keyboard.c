@@ -5,385 +5,386 @@
 
 int ShiftHolded = 0;
 int CapOn = 0;
+int X = 0;
+int Y = 0;
 
 void CheckAndPrintScanCodes(int ScanCode) {
 	switch(ScanCode){
 		case KEY_PRESSED_1:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'!');
+				charPrint(X,Y,33);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'1');
+			charPrint(X,Y,49);
 			return;
 			break;
 		case KEY_PRESSED_2:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'@');
+				charPrint(X,Y,64);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'2');
+			charPrint(X,Y,50);
 			return;
 			break;
 		case KEY_PRESSED_3:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'#');
+				charPrint(X,Y,35);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'3');
+			charPrint(X,Y,51);
 			return;
 			break;
 		case KEY_PRESSED_4:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'$');
+				charPrint(X,Y,36);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'4');
+			charPrint(X,Y,52);
 			return;
 			break;
 		case KEY_PRESSED_5:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'%');
+				charPrint(X,Y,37);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'5');
+			charPrint(X,Y,53);
 			return;
 			break;
 		case KEY_PRESSED_6:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'^');
+				charPrint(X,Y,94);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'6');
+			charPrint(X,Y,54);
 			return;
 			break;
 		case KEY_PRESSED_7:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'&');
+				charPrint(X,Y,38);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'7');
+			charPrint(X,Y,55);
 			return;
 			break;
 		case KEY_PRESSED_8:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'*');
+				charPrint(X,Y,42);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'8');
+			charPrint(X,Y,56);
 			return;
 			break;
 		case KEY_PRESSED_9:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'(');
+				charPrint(X,Y,40);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'9');
+			charPrint(X,Y,57);
 			return;
 			break;
 		case KEY_PRESSED_0:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,')');
+				charPrint(X,Y,41);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'X');
+			charPrint(X,Y,48);
 			return;
 			break;
 		case KEY_PRESSED_MINUS:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'_');
+				charPrint(X,Y,95);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'-');
+			charPrint(X,Y,173);
 			return;
 			break;
 		case KEY_PRESSED_EQUALS:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'+');
+				charPrint(X,Y,43);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'=');
+			charPrint(X,Y,61);
 			return;
 			break;
 		case KEY_PRESSED_BACKSPACE:
-			xyToVideoAddresses(X-1,Y,' ');
-			update_cursor(X-1,Y);
-			X = X - 1;
+			charPrint(X-1,Y,32);
+			X = X - 2;
 			return;
 			break;
 		case KEY_PRESSED_Q:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'Q');
+				charPrint(X,Y,81);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'q');
+			charPrint(X,Y,113);
 			return;
 			break;
 		case KEY_PRESSED_W:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'W');
+				charPrint(X,Y,87);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'w');
+			charPrint(X,Y,119);
 			return;
 			break;
 		case KEY_PRESSED_E:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'E');
+				charPrint(X,Y,69);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'e');
+			charPrint(X,Y,101);
 			return;
 			break;
 		case KEY_PRESSED_R:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'R');
+				charPrint(X,Y,82);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'r');
+			charPrint(X,Y,114);
 			return;
 			break;
 		case KEY_PRESSED_T:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'T');
+				charPrint(X,Y,84);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'t');
+			charPrint(X,Y,116);
 			return;
 			break;
 		case KEY_PRESSED_Y:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'Y');
+				charPrint(X,Y,89);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'y');
+			charPrint(X,Y,121);
 			return;
 			break;
 		case KEY_PRESSED_U:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'U');
+				charPrint(X,Y,85);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'u');
+			charPrint(X,Y,117);
 			return;
 			break;
 		case KEY_PRESSED_I:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'I');
+				charPrint(X,Y,73);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'i');
+			charPrint(X,Y,105);
 			return;
 			break;
 		case KEY_PRESSED_O:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'O');
+				charPrint(X,Y,79);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'o');
+			charPrint(X,Y,111);
 			return;
 			break;
 		case KEY_PRESSED_P:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'P');
+				charPrint(X,Y,80);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'p');
+			charPrint(X,Y,112);
 			return;
 			break;
 		case KEY_PRESSED_OPEN_SQUARE_BRACKET:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'{');
+				charPrint(X,Y,123);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'[');
+			charPrint(X,Y,91);
 			return;
 			break;
 		case KEY_PRESSED_CLOSE_SQUARE_BRACKET:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'}');
+				charPrint(X,Y,125);
 				return;
 			}
-			xyToVideoAddresses(X,Y,']');
+			charPrint(X,Y,93);
 			return;
 			break;
 		case KEY_PRESSED_A:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'A');
+				charPrint(X,Y,65);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'a');
+			charPrint(X,Y,97);
 			return;
 			break;
 		case KEY_PRESSED_S:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'S');
+				charPrint(X,Y,83);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'s');
+			charPrint(X,Y,115);
 			return;
 			break;
 		case KEY_PRESSED_D:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'D');
+				charPrint(X,Y,68);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'d');
+			charPrint(X,Y,100);
 			return;
 			break;
 		case KEY_PRESSED_F:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'F');
+				charPrint(X,Y,70);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'f');
+			charPrint(X,Y,102);
 			return;
 			break;
 		case KEY_PRESSED_G:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'G');
+				charPrint(X,Y,71);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'g');
+			charPrint(X,Y,103);
 			return;
 			break;
 		case KEY_PRESSED_H:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'H');
+				charPrint(X,Y,72);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'h');
+			charPrint(X,Y,104);
 			return;
 			break;
 		case KEY_PRESSED_J:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'J');
+				charPrint(X,Y,74);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'j');
+			charPrint(X,Y,106);
 			return;
 			break;
 		case KEY_PRESSED_K:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'K');
+				charPrint(X,Y,75);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'k');
+			charPrint(X,Y,107);
 			return;
 			break;
 		case KEY_PRESSED_L:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'L');
+				charPrint(X,Y,76);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'l');
+			charPrint(X,Y,108);
 			return;
 			break;
 		case KEY_PRESSED_SEMICOLON:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,':');
+				charPrint(X,Y,58);
 				return;
 			}
-			xyToVideoAddresses(X,Y,';');
+			charPrint(X,Y,59);
 			return;
 			break;
 		case KEY_PRESSED_SINGLE_QUOTE:
-			xyToVideoAddresses(X,Y,'\'');
+			charPrint(X,Y,39);
 			return;
 			break;
 		case KEY_PRESSED_TILDE:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'~');
+				charPrint(X,Y,126);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'`');
+			charPrint(X,Y,96);
 			return;
 			break;
 		case KEY_PRESSED_BACK_SLASH:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'|');
+				charPrint(X,Y,124);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'\\');
+			charPrint(X,Y,92);
 			return;
 			break;
 		case KEY_PRESSED_Z:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'Z');
+				charPrint(X,Y,90);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'z');
+			charPrint(X,Y,122);
 			return;
 			break;
 		case KEY_PRESSED_X:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'X');
+				charPrint(X,Y,88);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'x');
+			charPrint(X,Y,120);
 			return;
 			break;
 		case KEY_PRESSED_C:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'C');
+				charPrint(X,Y,67);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'c');
+			charPrint(X,Y,99);
 			return;
 			break;
 		case KEY_PRESSED_V:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'V');
+				charPrint(X,Y,86);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'v');
+			charPrint(X,Y,118);
 			return;
 			break;
 		case KEY_PRESSED_B:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'B');
+				charPrint(X,Y,66);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'b');
+			charPrint(X,Y,98);
 			return;
 			break;
 		case KEY_PRESSED_N:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'N');
+				charPrint(X,Y,78);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'n');
+			charPrint(X,Y,110);
 			return;
 			break;
 		case KEY_PRESSED_M:
 			if(CapOn == 1 | ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'M');
+				charPrint(X,Y,77);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'m');
+			charPrint(X,Y,109);
 			return;
 			break;
 		case KEY_PRESSED_COMMA:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'<');
+				charPrint(X,Y,60);
 				return;
 			}
-			xyToVideoAddresses(X,Y,',');
+			charPrint(X,Y,44);
 			return;
 			break;
 		case KEY_PRESSED_PERIOD:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'>');
+				charPrint(X,Y,62);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'.');
+			charPrint(X,Y,46);
 			return;
 			break;
 		case KEY_PRESSED_FORWARD_SLASH:
 			if(ShiftHolded == 1){
-				xyToVideoAddresses(X,Y,'?');
+				charPrint(X,Y,63);
 				return;
 			}
-			xyToVideoAddresses(X,Y,'/');
+			charPrint(X,Y,47);
 			return;
 			break;
 		case KEY_PRESSED_CAPS_LOCK:
@@ -411,14 +412,14 @@ void CheckAndPrintScanCodes(int ScanCode) {
 			return;
 			break;
 		case KEY_RELEASED_ENTER:
-			update_cursor(0,Y+1);
 			Y = Y + 1;
 			X = 0;
 		case KEY_PRESSED_SPACE:
-			xyToVideoAddresses(X,Y,' ');
+			charPrint(X,Y,32);
 			return;
 			break;
 	}
+	X++;
 }
 
 void keyboard_isr() {

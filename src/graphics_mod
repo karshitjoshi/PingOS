@@ -1,0 +1,6 @@
+text/    text   pixel pixel    colors disply scrn system
+grph     resol  box  resolution       pages  addr
+
+
+04h = G  40x25  8x8   320x200    4       .   B800 CGA,PCjr,EGA,MCGA,VGA
+

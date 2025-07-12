@@ -5,6 +5,7 @@ global entry
 entry:
 	mov bx, Sector2
 	call PrintString
+	call ChangeGraphicsMode
 	call StartProtectedMode
 
 	mov ax,10h
@@ -14,6 +15,14 @@ entry:
 	mov gs,ax
 	mov ss,ax
 	jmp codeseg:EnterProtectedMode
+
+ChangeGraphicsMode:
+	push ax
+	mov ah, 0x0
+	mov al, 0x04
+	int 0x10
+	pop ax
+	ret
 
 Sector2:
 	db 'Entering Sector 2+.',0xA,0xD,0
@@ -192,21 +201,6 @@ SetUpIdentityPaging:
 	ret
 
 EnterProtectedMode:
-	mov [0xb8000], byte 'P'
-	mov [0xb8002], byte 'R'
-	mov [0xb8004], byte 'O'
-	mov [0xb8006], byte 'T'
-	mov [0xb8008], byte '-'
-	mov [0xb800a], byte 'M'
-	mov [0xb800c], byte 'O'
-	mov [0xb800e], byte 'D'
-	mov [0xb8010], byte 'E'
-	mov [0xb8012], byte ' '
-	mov [0xb8014], byte ' '
-	mov [0xb8016], byte ' '
-	mov [0xb8018], byte ' '
-	mov [0xb802a], byte ' '
-	mov [0xb802c], byte '.'
 	mov eax, 1
 	jmp StartLongMode
 
@@ -243,21 +237,6 @@ StartLongMode:
 Enter64:
 
 	call ActivateSSE
-	mov [0xb8000], byte 'L'
-	mov [0xb8002], byte 'O'
-	mov [0xb8004], byte 'N'
-	mov [0xb8006], byte 'G'
-	mov [0xb8008], byte '-'
-	mov [0xb800a], byte 'M'
-	mov [0xb800c], byte 'O'
-	mov [0xb800e], byte 'D'
-	mov [0xb8010], byte 'E'
-	mov [0xb8012], byte ' '
-	mov [0xb8014], byte ' '
-	mov [0xb8016], byte ' '
-	mov [0xb8018], byte ' '
-	mov [0xb802a], byte ' '
-	mov [0xb802c], byte '.'
 	mov rax, 1
 	jmp _start
 	jmp $

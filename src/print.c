@@ -1,79 +1,61 @@
 #pragma once
-#include "cursor.c"
+#include "characterset.c"
+// Video Mode Memory : 0xb8000
+// Odd is First , Even is after 8000 , CGA Video Memory placements.
+// 320x200 is Pixel Resolution
+#define WHITE 3
+#define BLACK 0
+#define PINK 2
+#define BLUE 1
 
-int X,Y;
-int isNull;
+#define EVENSCREEN 0xb8000
+#define ODDSCREEN (0xb8000 + 8192)
+#define SCREENSIZE 8000
+#define LINESIZE 80
 
-int xyToVideoAddresses(int x,int y,char character) {
-	char *VIDMEM = (char *)0xb8000;
-	VIDMEM[(160 * y) + (x * 2)] = character;
-	// This Expression "(160 * y) + (x * 2)" was simplified by borrrden in Discord , Thanks :D
-	update_cursor(x+1,y);
-	X = x + 1;
-	Y = y;
+int fore,back;
+
+int colorPixel(int x,int y,int data){
+	unsigned char *pixel;
+	unsigned char *VIDMEM;
+	if(y%2 == 1){
+		VIDMEM = (char *)ODDSCREEN;
+		y = (y-1)/2;
+
+	} else {
+		VIDMEM = (char *)EVENSCREEN;
+		y = y/2;
+	}
+	int k = (x % 4);
+	x = (x-k)/4;
+	pixel = (VIDMEM + (80*y) + x);
+	*pixel = (*pixel) & (~(3 << 2*(3-k)));
+	*pixel = (data << (2*(3-k))) | *pixel;
 	return 0;
 }
 
-int PrintStringXY(char *array,int array_size,int x,int y) {
-	int i;
-	for (i = 0;i < array_size;i++){
-			if (array[i] == NULL){
-				return 0;
+int charPrint(int x,int y,int ch){
+	unsigned char proc;
+	fore = WHITE;
+	back = PINK;
+	for(int i = 0;i < 8;i++){
+		proc = font8x8[8*ch + i];
+		for(int j = 0;j < 8;j++){
+			if(proc % 2 == 1){
+				colorPixel((8*x)+(7-j),(y*8 + i),fore);
+			} else {
+				colorPixel((8*x)+(7-j),(y*8 + i),back);
 			}
-			xyToVideoAddresses(x+i,y,array[i]);
+			proc = proc >> 1;
+		}
 	}
 	return 0;
 }
 
-//Conversion-Strings
-
-char hexToStringOutput[128];
-
-char* HexToString(int value){
-  int* valPtr = &value;
-  uint_8* ptr;
-  uint_8 temp;
-  uint_8 size = (sizeof(int)) * 2 - 1;
-  uint_8 i;
-  for (i = 0; i < size; i++){
-    ptr = ((uint_8*)valPtr + i);
-    temp = ((*ptr & 0xF0) >> 4);
-    hexToStringOutput[size - (i * 2 + 1)] = temp + (temp > 9 ? 55 : 48);
-    temp = ((*ptr & 0x0F));
-    hexToStringOutput[size - (i * 2 + 0)] = temp + (temp > 9 ? 55 : 48);
-  }
-  hexToStringOutput[size + 1] = 0;
-  return hexToStringOutput;
-}
-
-char integerToStringOutput[128];
-char* IntegerToString(int value) {
-
-	uint_8 isNegative = 0;
-
-	if (value < 0) {
-		isNegative = 1;
-		value *= -1;
-		integerToStringOutput[0] = '-';
+void clearScreen(){
+	for(int i=0;i<40;i++){
+		for(int j=0;j<25;j++){
+			charPrint(i,j,32);
+		}
 	}
-
-	uint_8 size = 0;
-	uint_64 sizeTester = (uint_64)value;
-	while (sizeTester / 10 > 0) {
-		sizeTester /= 10;
-		size++;
-	}
-
-	uint_8 index = 0;
-	uint_64 newValue = (uint_64)value;
-	while (newValue / 10 > 0) {
-		uint_8 remainder = newValue % 10;
-		newValue /= 10;
-		integerToStringOutput[isNegative + size - index] = remainder + 48; 
-		index++;
-	}
-	uint_8 remainder = newValue % 10;
-	integerToStringOutput[isNegative + size - index] = remainder + 48;
-	integerToStringOutput[isNegative + size + 1] = 0;
-	return integerToStringOutput;
 }
