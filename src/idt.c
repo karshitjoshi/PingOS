@@ -2,6 +2,7 @@
 #include "outb_inb.c"
 #include "types.h"
 #include "idt.h"
+#include "timer.c"
 
 void InitializeIDT(){
 	// IRQ1
@@ -198,6 +199,7 @@ void InitializeIDT(){
     outb(PIC2_DATA, a2);
     outb(0x21,0xfd);
     outb(0xa1,0xff);
+    initTimer();
 	//LOAD IDT !!
 	asm volatile("lidtq (%0)" :: "r"(&IDTinfo) : "memory");
 	asm("sti");

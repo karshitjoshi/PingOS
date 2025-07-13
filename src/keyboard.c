@@ -3,13 +3,14 @@
 #include "types.h"
 #include "print.c"
 
-int ShiftHolded = 0;
+int LeftShiftHolded = 0;
+int RightShiftHolded = 0;
 int CapOn = 0;
 int X = 0;
 int Y = 0;
 
 void CheckAndPrintScanCodes(int ScanCode) {
-	switch(ScanCode){
+	switch(ScanCode){/*
 		case KEY_PRESSED_1:
 			if(ShiftHolded == 1){
 				charPrint(X,Y,33);
@@ -394,30 +395,30 @@ void CheckAndPrintScanCodes(int ScanCode) {
 			}
 			CapOn = 1;
 			return;
-			break;
+			break; */
 		case KEY_PRESSED_LEFT_SHIFT:
-			ShiftHolded = 1;
+			LeftShiftHolded = 1;
 			return;
 			break;
 		case KEY_RELEASED_LEFT_SHIFT:
-			ShiftHolded = 0;
+			LeftShiftHolded = 0;
 			return;
 			break;
 		case KEY_PRESSED_RIGHT_SHIFT:
-			ShiftHolded = 1;
+			RightShiftHolded = 1;
 			return;
 			break;
 		case KEY_RELEASED_RIGHT_SHIFT:
-			ShiftHolded = 0;
+			RightShiftHolded = 0;
 			return;
-			break;
+			break;/*)
 		case KEY_RELEASED_ENTER:
 			Y = Y + 1;
 			X = 0;
 		case KEY_PRESSED_SPACE:
 			charPrint(X,Y,32);
 			return;
-			break;
+			break; */
 	}
 	X++;
 }
