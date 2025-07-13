@@ -1,7 +1,7 @@
 # PingOS
 
 
-https://github.com/karshitjoshi/PingOS/raw/refs/heads/main/testing/Testing2.mp4
+https://github.com/user-attachments/assets/5aedc40c-ab85-4687-995c-ffc405e49e26
 
 
 **PingOS** is a minimalist hobbyist operating system built for the **x86_64 architecture** that boots directly into **Long Mode** and runs a single purpose: a retro **Ping Pong** game using CGA graphics. It's an educational and nostalgic project combining low-level OS development with a simple arcade-style game.
